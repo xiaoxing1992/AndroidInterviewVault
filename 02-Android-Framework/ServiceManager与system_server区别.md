@@ -142,6 +142,7 @@ adb shell service check window
 - [[Binder通信原理]]
 - [[Init进程启动与rc解析]]
 - [[Zygote进程启动与App进程孵化]]
+- [[系统服务依赖解决与发布机制与线程模型]]
 - [[系统服务启动流程]]
 - [[SystemServer启动流程]]
 - [[为什么App由Zygote-fork而非system_server]]
