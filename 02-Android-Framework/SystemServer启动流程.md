@@ -227,6 +227,7 @@ adb shell cat /proc/$(adb shell pidof system_server)/attr/current
 
 ### 延伸问题
 
+- [[系统服务启动流程]]
 - [[Zygote进程启动与App进程孵化]]
 - [[ZygoteConnection-runOnce详解]]
 - [[ServiceManager与system_server区别]]
