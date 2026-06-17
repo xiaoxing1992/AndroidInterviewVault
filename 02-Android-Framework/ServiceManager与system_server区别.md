@@ -31,11 +31,11 @@ init
 
 **核心区别：**
 
-| 对象 | 本质 | 谁启动 | 主要职责 |
-|------|------|--------|----------|
-| `servicemanager` | native 进程 | `init` | 管理 Binder 服务名和 Binder 引用 |
-| `ServiceManager` | Java 工具类 | App/framework 代码调用 | 封装 `getService/addService` 等查询注册 API |
-| `system_server` | Java 进程 | Zygote fork | 承载 AMS、PMS、WMS、PowerManagerService 等系统服务 |
+| 对象               | 本质        | 谁启动                | 主要职责                                     |
+| ---------------- | --------- | ------------------ | ---------------------------------------- |
+| `servicemanager` | native 进程 | `init`             | 管理 Binder 服务名和 Binder 引用                 |
+| `ServiceManager` | Java 工具类  | App/framework 代码调用 | 封装 `getService/addService` 等查询注册 API     |
+| `system_server`  | Java 进程   | Zygote fork        | 承载 AMS、PMS、WMS、PowerManagerService 等系统服务 |
 
 **一次系统服务查找过程：**
 

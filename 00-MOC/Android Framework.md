@@ -10,6 +10,8 @@
 | S | high | [[Android进程创建方式-fork-execve与Zygote]] |
 | S | high | [[ServiceManager与system_server区别]] |
 | S | high | [[Activity启动流程]] |
+| S | high | [[Activity所在进程的启动过程]] |
+| B | high | [[Activity生命周期回调详解]] |
 | S | high | [[Zygote进程启动与App进程孵化]] |
 | S | high | [[Handler-Looper-MessageQueue机制]] |
 | S | high | [[Binder通信原理]] |
@@ -17,6 +19,12 @@
 | A | medium | [[PMS包管理与安装流程]] |
 | A | medium | [[ContentProvider启动时序]] |
 | A | high | [[Context体系与ContextWrapper]] |
+| A | high | [[Application原理与实践]] |
+| A | high | [[Activity中this与getBaseContext的区别]] |
+| S | high | [[Activity显示原理]] |
+| S | high | [[Android UI刷新机制]] |
+| A | high | [[Service启动方式与原理]] |
+| A | high | [[静态广播与动态广播详解]] |
 | S | high | [[App冷启动全链路]] |
 
 ## 关联主题
