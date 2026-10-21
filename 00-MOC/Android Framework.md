@@ -23,6 +23,12 @@
 | A | high | [[Activity中this与getBaseContext的区别]] |
 | S | high | [[Activity显示原理]] |
 | S | high | [[Android UI刷新机制]] |
+| S | high | [[Surface跨进程传递机制]] |
+| S | high | [[Surface绘制原理]] |
+| S | high | [[VSYNC详解]] |
+| S | medium | [[HWComposer详解]] |
+| S | high | [[Android Framework中的IPC方式]] |
+| A | high | [[跨进程传递大图片]] |
 | A | high | [[Service启动方式与原理]] |
 | A | high | [[静态广播与动态广播详解]] |
 | S | high | [[App冷启动全链路]] |

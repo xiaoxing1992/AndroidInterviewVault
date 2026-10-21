@@ -142,6 +142,60 @@ void scheduleTraversals() {
 
 ---
 
+#### Choreographer 怎么保证每个线程独有（ThreadLocal）
+
+```java
+// Choreographer.java
+public final class Choreographer {
+    // ★ ThreadLocal 保证每个线程一个实例
+    private static final ThreadLocal<Choreographer> sThreadInstance =
+            new ThreadLocal<Choreographer>() {
+                @Override
+                protected Choreographer initialValue() {
+                    // 每个线程第一次调用 get() 时创建
+                    Looper looper = Looper.myLooper();
+                    if (looper == null) {
+                        throw new IllegalStateException(
+                            "The current thread must have a looper!");
+                    }
+                    return new Choreographer(looper, VSYNC_TYPE_APP);
+                }
+            };
+
+    // 获取当前线程的 Choreographer
+    public static Choreographer getInstance() {
+        return sThreadInstance.get();
+    }
+}
+```
+
+```
+ThreadLocal 原理：
+  → 每个 Thread 对象内部有 ThreadLocalMap
+  → key = ThreadLocal 实例（sThreadInstance，所有线程共享）
+  → value = 该线程独有的 Choreographer 实例
+  → 线程 A get() → 线程 A 的 Choreographer
+  → 线程 B get() → 线程 B 的 Choreographer
+  → 互不影响
+
+数据结构：
+  主线程：
+    Thread.threadLocals[sThreadInstance] = Choreographer(mainLooper)
+  子线程：
+    Thread.threadLocals[sThreadInstance] = Choreographer(childLooper)
+
+为什么需要每个线程独有？
+  → Choreographer 持有 Looper、DisplayEventReceiver、FrameCallback 列表
+  → 共享会导致线程安全问题
+  → 每个线程独立注册 VSYNC、独立执行 doFrame
+
+Looper 也是同样的模式：
+  private static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<>();
+  → 每个线程一个 Looper
+```
+
+---
+
 #### 第 2 步：Choreographer 调度回调
 
 ```java
